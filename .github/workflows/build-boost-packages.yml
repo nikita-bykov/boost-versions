@@ -19,10 +19,10 @@ defaults:
 
 jobs:
   build_boost:
-    name: Build Boost ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
+    name: Build Boost ${{ github.event.inputs.VERSION }} [${{ matrix.vmImage }}]
     runs-on: ubuntu-latest
     env: 
-      ARTIFACT_NAME: Boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-x64
+      ARTIFACT_NAME: Boost-${{ github.event.inputs.VERSION }}-${{ matrix.vmImage }}-x64
     strategy:
       fail-fast: false
       matrix:
