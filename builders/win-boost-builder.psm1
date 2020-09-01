@@ -27,7 +27,7 @@ class WinBoostBuilder : BoostBuilder {
         $this.InstallationTemplateName = "win-setup-template.ps1"
         $this.InstallationScriptName = "setup.ps1"
         $toolsetPart = $toolset.Replace("-", "")
-        $this.OutputArtifactName = "boost-$Version-$Platform-$toolsetPart-$Architecture.7z"
+        $this.OutputArtifactName = "boost-$Version-$Platform-$toolsetPart-$Architecture.tar.gz"
     }
 
     [void] CreateIncludeSymlink() {
