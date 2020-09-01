@@ -58,7 +58,6 @@ function Get-BoostBuilder {
         [string] $Platform
     )
 
-    Write-Host "point 1"
     if ($Platform -match 'win32') {
         $builder = [WinBoostBuilder]::New($Version, $Platform, $Architecture, $Toolset)
     } elseif ($Platform -match 'linux') {
@@ -73,5 +72,4 @@ function Get-BoostBuilder {
 
 ### Create Boost builder instance, and build artifact
 $Builder = Get-BoostBuilder -Version $Version -Platform $Platform -Architecture $Architecture
-Write-Host "point 2"
 $Builder.Build()
