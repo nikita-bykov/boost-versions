@@ -26,16 +26,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        vmImage: [ubuntu-16.04, ubuntu-18.04, vs2017-win2016, windows-2019]
         include:
-          - vmImage: ubuntu-16.04
-            architecture: x64
-            toolset: gcc
-            platform: linux-16.04
-          - vmImage: ubuntu-18.04
-            architecture: x64
-            toolset: gcc
-            platform: linux-18.04
+          # - vmImage: ubuntu-16.04
+          #   architecture: x64
+          #   toolset: gcc
+          #   platform: linux-16.04
+          # - vmImage: ubuntu-18.04
+          #   architecture: x64
+          #   toolset: gcc
+          #   platform: linux-18.04
           - vmImage: vs2017-win2016
             architecture: x86_64
             toolset: msvc-14.1
