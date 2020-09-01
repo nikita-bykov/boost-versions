@@ -22,8 +22,8 @@ Required parameter. The platform for which Boost will be built.
 param(
     [Parameter (Mandatory=$true)][Version] $Version,
     [Parameter (Mandatory=$true)][string] $Platform,
-    [Parameter (Mandatory=$true)][string] $Architecture,
-    [Parameter (Mandatory=$true)][string] $Toolset
+    [Parameter (Mandatory=$true)][string] $Toolset,
+    [string] $Architecture = "x64"
 )
 
 Import-Module (Join-Path $PSScriptRoot "../helpers" | Join-Path -ChildPath "common-helpers.psm1") -DisableNameChecking

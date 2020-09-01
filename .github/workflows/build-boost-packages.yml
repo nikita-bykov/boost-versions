@@ -1,6 +1,5 @@
 name: Generate Boost package
 on:
-  push:
   workflow_dispatch:
     inputs:
       VERSION:
