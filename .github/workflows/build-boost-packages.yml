@@ -26,7 +26,25 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [linux, darwin, win32]
+        vmImage: [ubuntu-16.04, ubuntu-18.04, vs2017-win2016, windows-2019]
+        include:
+          - vmImage: ubuntu-16.04
+            architecture: x64
+            toolset: gcc
+            platform: linux-16.04
+          - vmImage: ubuntu-18.04
+            architecture: x64
+            toolset: gcc
+            platform: linux-16.04
+          - vmImage: vs2017-win2016
+            architecture: x64
+            toolset: gcc
+            platform: win32
+          - vmImage: windows-2019
+            architecture: x64
+            toolset: gcc
+            platform: win32
+
     steps:
     - uses: actions/checkout@v2
       with:
@@ -34,14 +52,10 @@ jobs:
 
     - name: Build Boost ${{ env.VERSION }}
       run: |
-        if ('${{ matrix.platform }}' -eq 'win32') {
-          $Toolset = "msvc-14.2"
-        } else {
-          $Toolset = "gcc"
-        }
         ./builders/build-boost.ps1 -Version $env:VERSION `
-                                   -Platform ${{ matrix.platform }} `
-                                   -Toolset $Toolset
+                                   -Platform ${{ matrix.vmImage.platform }}
+                                   -Architecture: ${{ matrix.vmImage.architecture }}
+                                   -Toolset: ${{ matrix.vmImage.toolset }}
     - name: Publish artifact
       uses: actions/upload-artifact@v2
       with:
