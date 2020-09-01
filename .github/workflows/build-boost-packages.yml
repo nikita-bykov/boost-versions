@@ -110,7 +110,7 @@ jobs:
   publish_release:
     name: Publish release
     if: github.event.inputs.PUBLISH_RELEASES == 'true'
-    needs: test_boost
+    # needs: test_boost
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v2
