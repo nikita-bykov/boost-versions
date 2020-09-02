@@ -8,11 +8,11 @@ jobs:
     name: Test
     runs-on: windows-latest
     steps:
-    - run: Get-ChildItem -Path C:\Program Files (x86)
+    - run: Get-ChildItem -Path "C:\Program Files (x86)"
       shell: pwsh
 
-    - run: Get-ChildItem -Path C:\Program Files (x86)\Microsoft Visual Studio
+    - run: Get-ChildItem -Path "C:\Program Files (x86)\Microsoft Visual Studio"
       shell: pwsh
 
-    - run: Get-ChildItem -Path C:\Program Files (x86)\Microsoft Visual Studio\Installer
+    - run: Get-ChildItem -Path "C:\Program Files (x86)\Microsoft Visual Studio\Installer"
       shell: pwsh
