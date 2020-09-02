@@ -8,5 +8,5 @@ jobs:
     name: Test
     runs-on: windows-latest
     steps:
-    - run: env | sort
-      shell: bash
+    - run: Write-Host "ProgramFiles - ${env:ProgramFiles(x86)}"
+      shell: pwsh
