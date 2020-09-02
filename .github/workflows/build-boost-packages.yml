@@ -15,7 +15,7 @@ env:
   VERSION: ${{ github.event.inputs.VERSION }}
 defaults:
   run:
-    shell: powershell
+    shell: pwsh
 
 jobs:
   build_boost:
@@ -50,6 +50,7 @@ jobs:
         submodules: true
 
     - name: Build Boost ${{ env.VERSION }}
+      shell: powershell
       run: |
         ./builders/build-boost.ps1 -Version $env:VERSION `
                                    -Platform ${{ matrix.platform }} `
