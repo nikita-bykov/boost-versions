@@ -48,7 +48,6 @@ class WinBoostBuilder : BoostBuilder {
         Write-Host "Initialize VS dev environment"
         Invoke-VSDevEnvironment
 
-        Write-Host $this.WorkFolderLocation
         Push-Location -Path $this.WorkFolderLocation
 
         Write-Host "Invoke bootstrap.sh"
