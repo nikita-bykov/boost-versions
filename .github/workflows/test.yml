@@ -11,10 +11,10 @@ jobs:
     - run: Write-Host "ProgramFiles - ${env:ProgramFiles(x86)}"
       shell: pwsh
     - run: |
-        Get-ChildItem 
+        Get-ChildItem -Path C:\
         $vswhereApiUri = "https://api.github.com/repos/Microsoft/vswhere/releases/latest"
         $tag = (Invoke-RestMethod -Uri $vswhereApiUri)[0].tag_name
         $vswhereUri = "https://github.com/Microsoft/vswhere/releases/download/$tag/vswhere.exe"
         Invoke-WebRequest -Uri $vswhereUri -OutFile $vswhere | Out-Null
-        Get-ChildItem 
+        Get-ChildItem -Path C:\
       shell: pwsh
