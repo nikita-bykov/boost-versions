@@ -13,29 +13,29 @@ on:
 
 env:
   VERSION: ${{ github.event.inputs.VERSION }}
-# defaults:
-#   run:
-#     shell: pwsh
+defaults:
+  run:
+    shell: pwsh
 
 jobs:
   build_boost:
     name: Build Boost ${{ github.event.inputs.VERSION }} [${{ matrix.vmImage }}]
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.vmImage }}
     env: 
       ARTIFACT_NAME: Boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-${{ matrix.architecture }}
     strategy:
       fail-fast: false
       matrix:
         include:
-          # - vmImage: ubuntu-16.04
-          #   architecture: x64
-          #   toolset: gcc
-          #   platform: linux-16.04
-          # - vmImage: ubuntu-18.04
-          #   architecture: x64
-          #   toolset: gcc
-          #   platform: linux-18.04
-          - vmImage: vs2017-win2016
+          - vmImage: ubuntu-16.04
+            architecture: x64
+            toolset: gcc
+            platform: linux-16.04
+          - vmImage: ubuntu-18.04
+            architecture: x64
+            toolset: gcc
+            platform: linux-18.04
+          - vmImage: windows-latest
             architecture: x86_64
             toolset: msvc-14.1
             platform: win32
@@ -51,7 +51,7 @@ jobs:
 
     - name: Build Boost ${{ env.VERSION }}
       run: |
-        powershell ./builders/build-boost.ps1 -Version $env:VERSION `
+        ./builders/build-boost.ps1 -Version $env:VERSION `
                                    -Platform ${{ matrix.platform }} `
                                    -Architecture ${{ matrix.architecture }} `
                                    -Toolset ${{ matrix.toolset }}
