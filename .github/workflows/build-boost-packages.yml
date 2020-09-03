@@ -61,80 +61,80 @@ jobs:
         name: ${{ env.ARTIFACT_NAME }}
         path: ${{ runner.temp }}/artifact
 
-  test_boost:
-    name: Test Boost ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
-    needs: build_boost
-    runs-on: ${{ matrix.os }}
-    env: 
-      ARTIFACT_NAME: boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-${{ matrix.architecture }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - os: ubuntu-16.04
-          platform: linux-16.04
-          architecture: x64
-        - os: ubuntu-18.04
-          platform: linux-18.04
-          architecture: x64
-        - os: windows-2016
-          platform: win32
-          architecture: x86_64
-        - os: windows-2019
-          platform: win32
-          architecture: x86_64
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
+  # test_boost:
+  #   name: Test Boost ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
+  #   needs: build_boost
+  #   runs-on: ${{ matrix.os }}
+  #   env: 
+  #     ARTIFACT_NAME: boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-${{ matrix.architecture }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       include:
+  #       - os: ubuntu-16.04
+  #         platform: linux-16.04
+  #         architecture: x64
+  #       - os: ubuntu-18.04
+  #         platform: linux-18.04
+  #         architecture: x64
+  #       - os: windows-2016
+  #         platform: win32
+  #         architecture: x86_64
+  #       - os: windows-2019
+  #         platform: win32
+  #         architecture: x86_64
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       submodules: true
 
-    - name: Fully cleanup the toolcache directory before testing
-      run: ./helpers/clean-toolcache.ps1 -ToolName "boost"
+  #   - name: Fully cleanup the toolcache directory before testing
+  #     run: ./helpers/clean-toolcache.ps1 -ToolName "boost"
 
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        path: ${{ runner.temp }}
+  #   - name: Download artifact
+  #     uses: actions/download-artifact@v2
+  #     with:
+  #       path: ${{ runner.temp }}
 
-    - name: Extract files
-      run: |
-        if ('${{ matrix.platform }}' -eq 'win32') {
-          $artifactName = "${{ env.ARTIFACT_NAME }}.zip"
-          7z.exe x "$artifactName" -y | Out-Null 
-        } else {
-          $artifactName = "${{ env.ARTIFACT_NAME }}.tar.gz"
-          tar -xzf $artifactName
-        }
-      working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
+  #   - name: Extract files
+  #     run: |
+  #       if ('${{ matrix.platform }}' -eq 'win32') {
+  #         $artifactName = "${{ env.ARTIFACT_NAME }}.zip"
+  #         7z.exe x "$artifactName" -y | Out-Null 
+  #       } else {
+  #         $artifactName = "${{ env.ARTIFACT_NAME }}.tar.gz"
+  #         tar -xzf $artifactName
+  #       }
+  #     working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
 
-    - name: Apply build artifact to the local machine
-      run: |
-        if ('${{ matrix.platform }}' -eq 'win32') { powershell ./setup.ps1 } else { sh ./setup.sh }
-      working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
+  #   - name: Apply build artifact to the local machine
+  #     run: |
+  #       if ('${{ matrix.platform }}' -eq 'win32') { powershell ./setup.ps1 } else { sh ./setup.sh }
+  #     working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
 
-    - name: Setup Boost ${{ env.VERSION }}
-      uses: actions/setup-boost@v2.1.1
-      with:
-        boost-version: ${{ env.VERSION }}
+  #   - name: Setup Boost ${{ env.VERSION }}
+  #     uses: actions/setup-boost@v2.1.1
+  #     with:
+  #       boost-version: ${{ env.VERSION }}
 
-    - name: Wait for the logs
-      run: |
-        Write-Host "Fake step that do nothing"
-        Write-Host "We need it because log of previous step 'Setup Boost' is not available here yet."
-        Write-Host "In testing step (Boost.Tests.ps1) we analyze build log of 'Setup Boost' task"
-        Write-Host "to determine if Boost.js version was consumed from cache and was downloaded"
-        for ($i = 0; $i -lt 200; $i++) { Get-Random }
-    - name: Run tests
-      run: |
-        Install-Module Pester -Force -Scope CurrentUser
-        Import-Module Pester
-        Invoke-Pester -Script ./Boost.Tests.ps1 -EnableExit
-      working-directory: ./tests
+  #   - name: Wait for the logs
+  #     run: |
+  #       Write-Host "Fake step that do nothing"
+  #       Write-Host "We need it because log of previous step 'Setup Boost' is not available here yet."
+  #       Write-Host "In testing step (Boost.Tests.ps1) we analyze build log of 'Setup Boost' task"
+  #       Write-Host "to determine if Boost.js version was consumed from cache and was downloaded"
+  #       for ($i = 0; $i -lt 200; $i++) { Get-Random }
+  #   - name: Run tests
+  #     run: |
+  #       Install-Module Pester -Force -Scope CurrentUser
+  #       Import-Module Pester
+  #       Invoke-Pester -Script ./Boost.Tests.ps1 -EnableExit
+  #     working-directory: ./tests
 
   publish_release:
     name: Publish release
     if: github.event.inputs.PUBLISH_RELEASES == 'true'
-    needs: test_boost
+    # needs: test_boost
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v2
