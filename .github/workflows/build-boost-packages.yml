@@ -35,7 +35,7 @@ jobs:
             architecture: x64
             toolset: gcc
             platform: linux-18.04
-          - os: windows-latest
+          - os: windows-2016
             architecture: x86_64
             toolset: msvc-14.1
             platform: win32
@@ -77,7 +77,10 @@ jobs:
         - os: ubuntu-18.04
           platform: linux-18.04
           architecture: x64
-        - os: windows-latest
+        - os: windows-2016
+          platform: win32
+          architecture: x86_64
+        - os: windows-2019
           platform: win32
           architecture: x86_64
     steps:
