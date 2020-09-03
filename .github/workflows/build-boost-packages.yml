@@ -63,7 +63,7 @@ jobs:
 
   test_boost:
     name: Test Boost ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
-    needs: build_boost
+    # needs: build_boost
     runs-on: ${{ matrix.os }}
     env: 
       ARTIFACT_NAME: boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-${{ matrix.architecture }}
