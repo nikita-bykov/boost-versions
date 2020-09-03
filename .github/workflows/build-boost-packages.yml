@@ -99,12 +99,12 @@ jobs:
     - name: Extract files
       run: |
         if ('${{ matrix.platform }}' -eq 'win32') {
-          $artifactName = "${{ env.ARTIFACT_NAME }}.zip"
           ls
+          $artifactName = "${{ env.ARTIFACT_NAME }}.zip"
           7z.exe x "$artifactName" -y | Out-Null 
         } else {
-          $artifactName = "${{ env.ARTIFACT_NAME }}.tar.gz"
           ls
+          $artifactName = "${{ env.ARTIFACT_NAME }}.tar.gz"
           tar -xzf $artifactName
         }
       working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
