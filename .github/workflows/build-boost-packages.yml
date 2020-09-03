@@ -66,22 +66,26 @@ jobs:
     # needs: build_boost
     runs-on: ${{ matrix.os }}
     env: 
-      ARTIFACT_NAME: boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-${{ matrix.architecture }}
+      ARTIFACT_NAME: boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-${{ matrix.toolset }}-${{ matrix.architecture }}
     strategy:
       fail-fast: false
       matrix:
         include:
         - os: ubuntu-16.04
           platform: linux-16.04
+          toolset: gcc
           architecture: x64
         - os: ubuntu-18.04
           platform: linux-18.04
+          toolset: gcc
           architecture: x64
         - os: windows-2016
           platform: win32
+          toolset: msvc-14.1
           architecture: x86_64
         - os: windows-2019
           platform: win32
+          toolset: msvc-14.2
           architecture: x86_64
     steps:
     - uses: actions/checkout@v2
@@ -98,15 +102,8 @@ jobs:
 
     - name: Extract files
       run: |
-        if ('${{ matrix.platform }}' -eq 'win32') {
-          ls
-          $artifactName = "${{ env.ARTIFACT_NAME }}.zip"
-          7z.exe x "$artifactName" -y | Out-Null 
-        } else {
-          ls
           $artifactName = "${{ env.ARTIFACT_NAME }}.tar.gz"
           tar -xzf $artifactName
-        }
       working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
 
     - name: Apply build artifact to the local machine
