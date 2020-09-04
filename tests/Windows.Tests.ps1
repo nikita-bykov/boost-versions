@@ -21,10 +21,10 @@ Describe "Windows Tests" {
 
     It "Build with static libraries 1" {
         $buildArguments = @(
-            "/EHsc",
-            "/I", "${env:BOOST_ROOT}\include",
+            "-EHsc",
+            "-I", "${env:BOOST_ROOT}\include",
             "main-headers.cpp",
-            "/link", "/LIBPATH:${env:BOOST_ROOT}\lib"
+            "-link", "/LIBPATH:${env:BOOST_ROOT}\lib"
             # "/OUT:main_static_lib_1.exe"
         )
         "cl -nologo $buildArguments" | Should -ReturnZeroExitCode
