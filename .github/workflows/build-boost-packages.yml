@@ -15,7 +15,7 @@ env:
   VERSION: ${{ github.event.inputs.VERSION }}
 defaults:
   run:
-    shell: pwsh
+    shell: powershell
 
 jobs:
   # build_boost:
@@ -71,14 +71,14 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - os: ubuntu-16.04
-          platform: linux-16.04
-          toolset: gcc
-          architecture: x64
-        - os: ubuntu-18.04
-          platform: linux-18.04
-          toolset: gcc
-          architecture: x64
+        # - os: ubuntu-16.04
+        #   platform: linux-16.04
+        #   toolset: gcc
+        #   architecture: x64
+        # - os: ubuntu-18.04
+        #   platform: linux-18.04
+        #   toolset: gcc
+        #   architecture: x64
         - os: windows-2016
           platform: win32
           toolset: msvc14.1
