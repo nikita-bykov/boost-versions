@@ -113,7 +113,12 @@ jobs:
 
     - name: Setup BOOST_ROOT ${{ github.event.inputs.VERSION }}
       run: |
-        $BoostToolcachePath = Join-Path -Path $env:AGENT_TOOLSDIRECTORY -ChildPath "boost"
+        $targetPath = $env:AGENT_TOOLSDIRECTORY
+        if ([string]::IsNullOrEmpty($targetPath)) {
+            # GitHub Windows images don't have `AGENT_TOOLSDIRECTORY` variable
+            $targetPath = $env:RUNNER_TOOL_CACHE
+        }
+        $BoostToolcachePath = Join-Path -Path $targetPath -ChildPath "boost"
         $BoostToolcacheVersionPath = Join-Path -Path $BoostToolcachePath -ChildPath "${{ github.event.inputs.VERSION }}"
         $boostDirectory = Join-Path $BoostToolcacheVersionPath "${{ matrix.architecture }}"
         $LD_LIBRARY = Join-Path -Path $boostDirectory -ChildPath "lib"
