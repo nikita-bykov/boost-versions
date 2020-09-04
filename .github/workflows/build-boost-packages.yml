@@ -118,9 +118,13 @@ jobs:
         $boostDirectory = Join-Path $BoostToolcacheVersionPath "${{ matrix.architecture }}"
         $LD_LIBRARY = Join-Path -Path $boostDirectory -ChildPath "lib"
         Write-Host "BOOST_ROOT = ${boostDirectory}"
-      env:
-        BOOST_ROOT: ${boostDirectory}
-        LD_LIBRARY_PATH: ${LD_LIBRARY}
+        echo "::set-env name=BOOST_ROOT::${boostDirectory}"
+        echo "::set-env name=LD_LIBRARY_PATH::${LD_LIBRARY}"
+
+    - name: Check env var
+      run: |
+        $env:BOOST_ROOT
+        $env:LD_LIBRARY_PATH
 
     - name: Run tests
       run: |
