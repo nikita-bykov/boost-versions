@@ -133,7 +133,7 @@ jobs:
 
     - name: Run tests
       run: |
-        Install-Module Pester -Force -Scope CurrentUser -RequiredVersion 4.10.1
+        Install-Module Pester -Force -Scope CurrentUser
         Import-Module Pester
         $Platform = If ("${{ matrix.platform }}" -eq "win32") { "Windows" } else { "Nix" }
         $pesterParams = @(
@@ -148,7 +148,7 @@ jobs:
             }
           }
         )
-        Invoke-Pester -Script $pesterParams
+        Invoke-Pester -Script "./${Platform}.Tests.ps1" -EnableExit
       working-directory: ./tests
 
   publish_release:

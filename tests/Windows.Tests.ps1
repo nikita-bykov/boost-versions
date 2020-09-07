@@ -1,17 +1,14 @@
-param (
-    [Version] $Version,
-    [String] $Platform
-)
-
 Import-Module (Join-Path $PSScriptRoot "../helpers/pester-extensions.psm1")
 Import-Module (Join-Path $PSScriptRoot "../helpers/win-vs-env.psm1")
 
-Set-Location -Path "sources"
+BeforeAll {
+    Set-Location -Path "sources"
 
-$env:Path="$env:Path;${env:BOOST_ROOT}\lib"
+    $env:Path="$env:Path;${env:BOOST_ROOT}\lib"
 
-Write-Host "Initialize VS dev environment"
-Invoke-VSDevEnvironment
+    Write-Host "Initialize VS dev environment"
+    Invoke-VSDevEnvironment
+}
 
 Describe "Windows Tests" {
     It "Run simple code" {
@@ -40,7 +37,7 @@ Describe "Windows Tests" {
             "/OUT:main_dynamic_lib_1.exe"
         )
         "cl -nologo $buildArguments" | Should -ReturnZeroExitCode
-        # ".\main_dynamic_lib_1.exe" | Should -ReturnZeroExitCode
+        ".\main_dynamic_lib_1.exe" | Should -ReturnZeroExitCode
     }
 
     It "Build with static libraries 2" {
