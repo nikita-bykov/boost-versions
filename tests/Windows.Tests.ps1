@@ -37,7 +37,7 @@ Describe "Windows Tests" {
             "/I", "${env:BOOST_ROOT}\include",
             "main-headers.cpp",
             "/link", "/LIBPATH:${env:BOOST_ROOT}\lib"
-            # "/OUT:main_dynamic_lib_1.exe"
+            "/OUT:main_dynamic_lib_1.exe"
         )
         "cl -nologo $buildArguments" | Should -ReturnZeroExitCode
         # ".\main_dynamic_lib_1.exe" | Should -ReturnZeroExitCode
@@ -49,10 +49,10 @@ Describe "Windows Tests" {
             "/I", "${env:BOOST_ROOT}\include",
             "main_log.cpp",
             "/link", "/LIBPATH:${env:BOOST_ROOT}\lib"
-            # "/OUT:main_static_lib_2.exe"
+            "/OUT:main_static_lib_2.exe"
         )
         "cl -nologo $buildArguments" | Should -ReturnZeroExitCode
-        # ".\main_static_lib_2.exe" | Should -ReturnZeroExitCode
+        ".\main_static_lib_2.exe" | Should -ReturnZeroExitCode
     }
 
     It "Build with dynamic libraries 2" {
@@ -61,9 +61,9 @@ Describe "Windows Tests" {
             "/I", "${env:BOOST_ROOT}\include",
             "main_log.cpp",
             "/link", "/LIBPATH:${env:BOOST_ROOT}\lib"
-            # "/OUT:main_dynamic_lib_2.exe"
+            "/OUT:main_dynamic_lib_2.exe"
         )
         "cl -nologo $buildArguments" | Should -ReturnZeroExitCode
-        # ".\main_dynamic_lib_2.exe" | Should -ReturnZeroExitCode
+        ".\main_dynamic_lib_2.exe" | Should -ReturnZeroExitCode
     }
 }
