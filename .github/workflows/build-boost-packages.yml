@@ -136,18 +136,7 @@ jobs:
         Install-Module Pester -Force -Scope CurrentUser
         Import-Module Pester
         $Platform = If ("${{ matrix.platform }}" -eq "win32") { "Windows" } else { "Nix" }
-        $pesterParams = @(
-          @{
-            Path="./Common.Tests.ps1";
-          },
-          @{
-            Path="./${Platform}.Tests.ps1";
-            Parameters=@{
-              Version="${{ github.event.inputs.VERSION }}";
-              Platform="${{ matrix.platform }}"
-            }
-          }
-        )
+        Invoke-Pester -Script ./Common.Tests.ps1 -EnableExit
         Invoke-Pester -Script "./${Platform}.Tests.ps1" -EnableExit
       working-directory: ./tests
 
