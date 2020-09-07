@@ -15,7 +15,7 @@ env:
   VERSION: ${{ github.event.inputs.VERSION }}
 defaults:
   run:
-    shell: pwsh
+    shell: powershell
 
 jobs:
   # build_boost:

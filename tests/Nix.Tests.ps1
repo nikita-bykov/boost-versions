@@ -3,7 +3,6 @@ Import-Module (Join-Path $PSScriptRoot "../helpers/pester-extensions.psm1")
 BeforeAll {
     Set-Location "sources"
     $env:Path="$env:Path;${env:BOOST_ROOT}\lib"
-    Write-Host "Platform - ${env:PLATFORM}"
     if (${env:PLATFORM} -eq "linux-16.04") {
         Write-Host "Install dependencies"
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60 `
