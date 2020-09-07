@@ -30,10 +30,10 @@ Describe "Nix Tests" {
             "-w", "-DBOOST_LOG_DYN_LINK",
             "-I", "${env:BOOST_ROOT}/include",
             "-L", "${env:BOOST_ROOT}/lib", "main_log.cpp",
-            "-l:libboost_log_setup-mt-d-x64.so.${evn:VERSION}",
-            "-l:libboost_log-mt-d-x64.so.${evn:VERSION}",
-            "-l:libboost_thread-mt-d-x64.so.${evn:VERSION}",
-            "-l:libboost_filesystem-mt-d-x64.so.${evn:VERSION}",
+            "-l:libboost_log_setup-mt-d-x64.so.${env:VERSION}",
+            "-l:libboost_log-mt-d-x64.so.${env:VERSION}",
+            "-l:libboost_thread-mt-d-x64.so.${env:VERSION}",
+            "-l:libboost_filesystem-mt-d-x64.so.${env:VERSION}",
             "-lpthread"
         )
 
@@ -46,10 +46,10 @@ Describe "Nix Tests" {
             "-w", "-DBOOST_LOG_DYN_LINK",
             "-I", "${env:BOOST_ROOT}/include",
             "-L", "${env:BOOST_ROOT}/lib", "main_log.cpp",
-            "-l:libboost_log_setup-mt-x64.so.${evn:VERSION}",
-            "-l:libboost_log-mt-x64.so.${evn:VERSION}",
-            "-l:libboost_thread-mt-x64.so.${evn:VERSION}",
-            "-l:libboost_filesystem-mt-x64.so.${evn:VERSION}", 
+            "-l:libboost_log_setup-mt-x64.so.${env:VERSION}",
+            "-l:libboost_log-mt-x64.so.${env:VERSION}",
+            "-l:libboost_thread-mt-x64.so.${env:VERSION}",
+            "-l:libboost_filesystem-mt-x64.so.${env:VERSION}", 
             "-lpthread"
         )
 

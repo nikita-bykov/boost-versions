@@ -67,7 +67,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     env: 
       PLATFORM: ${{ matrix.platform }}
-      VERSION: ${{ github.event.inputs.VERSION }}
       ARTIFACT_NAME: boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-${{ matrix.toolset }}-${{ matrix.architecture }}
     strategy:
       fail-fast: false
