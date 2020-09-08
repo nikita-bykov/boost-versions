@@ -96,21 +96,21 @@ jobs:
     - name: Fully cleanup the toolcache directory before testing
       run: ./helpers/clean-toolcache.ps1 -ToolName "boost"
 
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        path: ${{ runner.temp }}
+    # - name: Download artifact
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #     path: ${{ runner.temp }}
 
-    - name: Extract files
-      run: |
-          $artifactName = "${{ env.ARTIFACT_NAME }}.tar.gz"
-          tar -xzf $artifactName
-      working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
+    # - name: Extract files
+    #   run: |
+    #       $artifactName = "${{ env.ARTIFACT_NAME }}.tar.gz"
+    #       tar -xzf $artifactName
+    #   working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
 
-    - name: Apply build artifact to the local machine
-      run: |
-        if ('${{ matrix.platform }}' -eq 'win32') { powershell ./setup.ps1 } else { sh ./setup.sh }
-      working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
+    # - name: Apply build artifact to the local machine
+    #   run: |
+    #     if ('${{ matrix.platform }}' -eq 'win32') { powershell ./setup.ps1 } else { sh ./setup.sh }
+    #   working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
 
     - name: Setup BOOST_ROOT ${{ github.event.inputs.VERSION }}
       run: |
