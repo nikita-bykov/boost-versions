@@ -18,52 +18,52 @@ defaults:
     shell: pwsh
 
 jobs:
-  build_boost:
-    name: Build Boost ${{ github.event.inputs.VERSION }} [${{ matrix.os }}]
-    runs-on: ${{ matrix.os }}
-    env: 
-      ARTIFACT_NAME: boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-${{ matrix.toolset }}-${{ matrix.architecture }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-16.04
-            architecture: x64
-            toolset: gcc
-            platform: linux-16.04
-          - os: ubuntu-18.04
-            architecture: x64
-            toolset: gcc
-            platform: linux-18.04
-          - os: windows-2016
-            architecture: x86_64
-            toolset: msvc-14.1
-            platform: win32
-          - os: windows-2019
-            architecture: x86_64
-            toolset: msvc-14.2
-            platform: win32
+  # build_boost:
+  #   name: Build Boost ${{ github.event.inputs.VERSION }} [${{ matrix.os }}]
+  #   runs-on: ${{ matrix.os }}
+  #   env: 
+  #     ARTIFACT_NAME: boost-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-${{ matrix.toolset }}-${{ matrix.architecture }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       include:
+  #         - os: ubuntu-16.04
+  #           architecture: x64
+  #           toolset: gcc
+  #           platform: linux-16.04
+  #         - os: ubuntu-18.04
+  #           architecture: x64
+  #           toolset: gcc
+  #           platform: linux-18.04
+  #         - os: windows-2016
+  #           architecture: x86_64
+  #           toolset: msvc-14.1
+  #           platform: win32
+  #         - os: windows-2019
+  #           architecture: x86_64
+  #           toolset: msvc-14.2
+  #           platform: win32
 
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       submodules: true
 
-    - name: Build Boost ${{ env.VERSION }}
-      run: |
-        ./builders/build-boost.ps1 -Version $env:VERSION `
-                                   -Platform ${{ matrix.platform }} `
-                                   -Architecture ${{ matrix.architecture }} `
-                                   -Toolset ${{ matrix.toolset }}
-    - name: Publish artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: ${{ env.ARTIFACT_NAME }}
-        path: ${{ runner.temp }}/artifact
+  #   - name: Build Boost ${{ env.VERSION }}
+  #     run: |
+  #       ./builders/build-boost.ps1 -Version $env:VERSION `
+  #                                  -Platform ${{ matrix.platform }} `
+  #                                  -Architecture ${{ matrix.architecture }} `
+  #                                  -Toolset ${{ matrix.toolset }}
+  #   - name: Publish artifact
+  #     uses: actions/upload-artifact@v2
+  #     with:
+  #       name: ${{ env.ARTIFACT_NAME }}
+  #       path: ${{ runner.temp }}/artifact
 
   test_boost:
     name: Test Boost ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
-    needs: build_boost
+    # needs: build_boost
     runs-on: ${{ matrix.os }}
     env: 
       PLATFORM: ${{ matrix.platform }}
