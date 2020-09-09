@@ -103,12 +103,11 @@ jobs:
 
     - name: Extract files
       run: |
-          Import-Module (Join-Path $PSScriptRoot "../helpers" | Join-Path -ChildPath "win-helpers.psm1") -DisableNameChecking
           $artifactName = "${{ env.ARTIFACT_NAME }}.tar.gz"
           If ("${{ matrix.platform }}" -eq "win32") {
             $assetTarPath = $artifactName.TrimEnd(".tar.gz")
-            Extract-SevenZipArchive -Path $artifactName -DestinationPath $assetTarPath
-            Extract-SevenZipArchive -Path $assetTarPath -DestinationPath ../
+            7z x $artifactName -o"$assetTarPath" -y | Out-Null
+            7z x $assetTarPath -y | Out-Null
           } else {
             tar -xzf $artifactName
           }
@@ -121,7 +120,7 @@ jobs:
 
     - name: Setup BOOST_ROOT ${{ github.event.inputs.VERSION }}
       run: |
-        Import-Module (Join-Path $PSScriptRoot "../helpers" | Join-Path -ChildPath "common-helpers.psm1") -DisableNameChecking
+        Import-Module (Join-Path $env:GITHUB_WORKSPACE "helpers" | Join-Path -ChildPath "common-helpers.psm1") -DisableNameChecking
         $boostDirectory = GetToolDirectory -ToolName "boost" -Version "${{ github.event.inputs.VERSION }}" -Architecture "${{ matrix.architecture }}"
         $LD_LIBRARY = Join-Path -Path $boostDirectory -ChildPath "lib"
         Write-Host "BOOST_ROOT = ${boostDirectory}"
