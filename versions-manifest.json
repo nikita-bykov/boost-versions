@@ -2,7 +2,7 @@
   {
     "version": "1.73.0",
     "stable": true,
-    "release_url": "https://github.com/actions/boost-versions/releases/tag/1.73.0-20200608.5",
+    "release_url": "https://github.com/nikita-bykov/boost-versions/releases/tag/1.73.0-246433782",
     "files": [
       {
         "filename": "boost-1.73.0-linux-16.04-gcc-x64.tar.gz",
@@ -10,7 +10,7 @@
         "platform": "linux",
         "platform_version": "16.04",
         "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.73.0-20200608.5/boost-1.73.0-linux-16.04-gcc-x64.tar.gz"
+        "download_url": "https://github.com/nikita-bykov/boost-versions/releases/download/1.73.0-246433782/boost-1.73.0-linux-16.04-gcc-x64.tar.gz"
       },
       {
         "filename": "boost-1.73.0-linux-18.04-gcc-x64.tar.gz",
@@ -18,156 +18,28 @@
         "platform": "linux",
         "platform_version": "18.04",
         "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.73.0-20200608.5/boost-1.73.0-linux-18.04-gcc-x64.tar.gz"
+        "download_url": "https://github.com/nikita-bykov/boost-versions/releases/download/1.73.0-246433782/boost-1.73.0-linux-18.04-gcc-x64.tar.gz"
       },
       {
         "filename": "boost-1.73.0-win32-msvc14.1-x86_64.tar.gz",
         "arch": "x86_64",
         "platform": "win32",
         "toolset": "msvc14.1",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.73.0-20200608.5/boost-1.73.0-win32-msvc14.1-x86_64.tar.gz"
+        "download_url": "https://github.com/nikita-bykov/boost-versions/releases/download/1.73.0-246433782/boost-1.73.0-win32-msvc14.1-x86_64.tar.gz"
       },
       {
         "filename": "boost-1.73.0-win32-msvc14.2-x86_64.tar.gz",
         "arch": "x86_64",
         "platform": "win32",
         "toolset": "msvc14.2",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.73.0-20200608.5/boost-1.73.0-win32-msvc14.2-x86_64.tar.gz"
+        "download_url": "https://github.com/nikita-bykov/boost-versions/releases/download/1.73.0-246433782/boost-1.73.0-win32-msvc14.2-x86_64.tar.gz"
       }
     ]
   },
   {
-    "version": "1.72.0",
+    "version": "1.15.0",
     "stable": true,
-    "release_url": "https://github.com/actions/boost-versions/releases/tag/1.72.0-20200608.4",
-    "files": [
-      {
-        "filename": "boost-1.72.0-linux-16.04-gcc-x64.tar.gz",
-        "arch": "x64",
-        "platform": "linux",
-        "platform_version": "16.04",
-        "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.72.0-20200608.4/boost-1.72.0-linux-16.04-gcc-x64.tar.gz"
-      },
-      {
-        "filename": "boost-1.72.0-linux-18.04-gcc-x64.tar.gz",
-        "arch": "x64",
-        "platform": "linux",
-        "platform_version": "18.04",
-        "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.72.0-20200608.4/boost-1.72.0-linux-18.04-gcc-x64.tar.gz"
-      },
-      {
-        "filename": "boost-1.72.0-win32-msvc14.1-x86_64.tar.gz",
-        "arch": "x86_64",
-        "platform": "win32",
-        "toolset": "msvc14.1",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.72.0-20200608.4/boost-1.72.0-win32-msvc14.1-x86_64.tar.gz"
-      },
-      {
-        "filename": "boost-1.72.0-win32-msvc14.2-x86_64.tar.gz",
-        "arch": "x86_64",
-        "platform": "win32",
-        "toolset": "msvc14.2",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.72.0-20200608.4/boost-1.72.0-win32-msvc14.2-x86_64.tar.gz"
-      }
-    ]
-  },
-  {
-    "version": "1.71.0",
-    "stable": true,
-    "release_url": "https://github.com/actions/boost-versions/releases/tag/1.71.0-20200608.3",
-    "files": [
-      {
-        "filename": "boost-1.71.0-linux-16.04-gcc-x64.tar.gz",
-        "arch": "x64",
-        "platform": "linux",
-        "platform_version": "16.04",
-        "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.71.0-20200608.3/boost-1.71.0-linux-16.04-gcc-x64.tar.gz"
-      },
-      {
-        "filename": "boost-1.71.0-linux-18.04-gcc-x64.tar.gz",
-        "arch": "x64",
-        "platform": "linux",
-        "platform_version": "18.04",
-        "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.71.0-20200608.3/boost-1.71.0-linux-18.04-gcc-x64.tar.gz"
-      },
-      {
-        "filename": "boost-1.71.0-win32-msvc14.1-x86_64.tar.gz",
-        "arch": "x86_64",
-        "platform": "win32",
-        "toolset": "msvc14.1",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.71.0-20200608.3/boost-1.71.0-win32-msvc14.1-x86_64.tar.gz"
-      },
-      {
-        "filename": "boost-1.71.0-win32-msvc14.2-x86_64.tar.gz",
-        "arch": "x86_64",
-        "platform": "win32",
-        "toolset": "msvc14.2",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.71.0-20200608.3/boost-1.71.0-win32-msvc14.2-x86_64.tar.gz"
-      }
-    ]
-  },
-  {
-    "version": "1.70.0",
-    "stable": true,
-    "release_url": "https://github.com/actions/boost-versions/releases/tag/1.70.0-20200608.2",
-    "files": [
-      {
-        "filename": "boost-1.70.0-linux-16.04-gcc-x64.tar.gz",
-        "arch": "x64",
-        "platform": "linux",
-        "platform_version": "16.04",
-        "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.70.0-20200608.2/boost-1.70.0-linux-16.04-gcc-x64.tar.gz"
-      },
-      {
-        "filename": "boost-1.70.0-linux-18.04-gcc-x64.tar.gz",
-        "arch": "x64",
-        "platform": "linux",
-        "platform_version": "18.04",
-        "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.70.0-20200608.2/boost-1.70.0-linux-18.04-gcc-x64.tar.gz"
-      },
-      {
-        "filename": "boost-1.70.0-win32-msvc14.1-x86_64.tar.gz",
-        "arch": "x86_64",
-        "platform": "win32",
-        "toolset": "msvc14.1",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.70.0-20200608.2/boost-1.70.0-win32-msvc14.1-x86_64.tar.gz"
-      }
-    ]
-  },
-  {
-    "version": "1.69.0",
-    "stable": true,
-    "release_url": "https://github.com/actions/boost-versions/releases/tag/1.69.0-20200608.1",
-    "files": [
-      {
-        "filename": "boost-1.69.0-linux-16.04-gcc-x64.tar.gz",
-        "arch": "x64",
-        "platform": "linux",
-        "platform_version": "16.04",
-        "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.69.0-20200608.1/boost-1.69.0-linux-16.04-gcc-x64.tar.gz"
-      },
-      {
-        "filename": "boost-1.69.0-linux-18.04-gcc-x64.tar.gz",
-        "arch": "x64",
-        "platform": "linux",
-        "platform_version": "18.04",
-        "toolset": "gcc",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.69.0-20200608.1/boost-1.69.0-linux-18.04-gcc-x64.tar.gz"
-      },
-      {
-        "filename": "boost-1.69.0-win32-msvc14.1-x86_64.tar.gz",
-        "arch": "x86_64",
-        "platform": "win32",
-        "toolset": "msvc14.1",
-        "download_url": "https://github.com/actions/boost-versions/releases/download/1.69.0-20200608.1/boost-1.69.0-win32-msvc14.1-x86_64.tar.gz"
-      }
-    ]
+    "release_url": "https://github.com/nikita-bykov/boost-versions/releases/tag/1.15.0-243173303",
+    "files": null
   }
 ]
